@@ -1,0 +1,58 @@
+<div class="d-flex">
+  <div class="d-flex pl-2"><button class="btn btn-primary btn-sm" (click)="ChangeShowFilterStatus()"><i
+        class="fa fa-bars text-white" aria-hidden="true"></i></button></div>
+  <div *ngIf="showFilter==true">
+    <form [formGroup]="filterForm" (ngSubmit)="ApplyFilters()">
+      <span class="pl-2">
+        <input type="text" formControlName="filterText" (change)="ChangePageSettings()" placeholder="Search">
+      </span>
+      <span class="pl-2">
+        <label class="text-white p-0 m-0">StartDate</label><input type="datetime-local" formControlName="startDate"
+          (change)="ChangePageSettings()">
+      </span>
+      <span class="pl-2">
+        <label class="text-white p-0 m-0">EndDate</label><input type="datetime-local" formControlName="endDate"
+          (change)="ChangePageSettings()">
+      </span>
+      <span class="pl-2">
+        <label class="text-white p-0 m-0">EventType</label>
+        <select value="" formControlName="freeToAttend" (change)="onEventTypeChange($event)">
+          <option value="true">Free</option>
+          <option value="false">Paid</option>
+          <option value="Both">Both</option>
+        </select>
+      </span>
+      <span class="pl-2">
+        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search text-white"> Search</i></button>
+      </span>
+      <span class="pl-2">
+        <button (click)="ClearFilters()" preventDefault=true class="btn btn-danger btn-sm"><i
+            class="fa fa-ban text-white"> Clear</i></button>
+      </span>
+    </form>
+  </div>
+</div>
+<div class="scrollable-container">
+  <div class="d-flex align-items-center pe-auto" *ngIf="currentPage>1">
+    <a class="fa fa-arrow-circle-left fa-2x" style="cursor: pointer;" aria-hidden="true" (click)="Previous()"></a>
+  </div>
+  <div class="card" *ngFor="let event of events" (click)="handleClick(event)">
+    <mat-card class="matcard">
+      <mat-card-header>
+        <mat-card-title class="tile-title">{{ event.name }}</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <img class="tile-image" [src]="'data:image/png;base64,' + event.posterImage" alt="Poster Image">
+        <p class="tile-dates">Dates: {{ event.startDate | date }} - {{ event.endDate | date }}</p>
+        <p class="ages" *ngIf="!event.hasAgeLimit">No age limits</p>
+        <p class="ages" *ngIf="event.hasAgeLimit">Ages:{{ event.ageLimitLower }} - {{ event.ageLimitUpper }}</p>
+        <p class="ages" *ngIf="(event.eventCapacity-event.currentOccupancy)>0">Remaining slots: {{
+          event.eventCapacity-event.currentOccupancy }}</p>
+        <p class="ages alreadyFull" *ngIf="(event.eventCapacity-event.currentOccupancy)==0">Already Full</p>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="d-flex align-items-center " *ngIf="currentPage<pageCount">
+    <a class="fa fa-arrow-circle-right fa-2x" style="cursor: pointer;" aria-hidden="true" (click)="Next()"></a>
+  </div>
+</div>

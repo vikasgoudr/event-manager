@@ -1,0 +1,196 @@
+<!-- <div class="container">
+  <h2 class="upcomming">Your Tickets</h2>
+  <div *ngFor="let ticket of ticketsData">
+    <div
+      class="item"
+      [ngClass]="{ 'free-ticket': ticket.event.isFreeToAttend }"
+    >
+      <div class="item-right">
+        <div class="qr-code">
+          <qrcode
+            [qrdata]="generateQRCodeValue(ticket.questionAnswers)"
+            [width]="128"
+            [errorCorrectionLevel]="'M'"
+          ></qrcode>
+        </div>
+        <span class="up-border"></span>
+        <span class="down-border"></span>
+      </div>
+      <div class="item-left">
+        <p class="event">Ticket for Event:</p>
+        <div class="title">{{ ticket.event.name }}</div>
+        <span *ngIf="!ticket.event.isFreeToAttend">
+          <b style="color:darkslateblue"
+            >TYPE:  {{ ticket.paymentTier.name }}(₹{{
+              ticket.paymentTier.amount
+            }})</b
+          >
+        </span>
+        <span *ngIf="ticket.event.isFreeToAttend" style="color: green">
+          <b> FREE</b>
+        </span>
+        <div class="sce">
+          <div class="icon">
+            <i class="fa fa-table"></i>
+          </div>
+          <p>
+            {{ ticket.event.startDate | date : "EEEE" }}
+            {{ ticket.event.startDate | date }} <br />
+            {{ ticket.event.startDate | date : "h:mm a" }}
+          </p>
+        </div>
+        <div class="fix"></div>
+        <div class="loc">
+          <div class="icon">
+            <i class="fa fa-map-marker"></i>
+          </div>
+          <p>
+            {{ ticket.event.address.city }}, {{ ticket.event.address.state
+            }}<br />
+            {{ ticket.event.address.country }}
+          </p>
+        </div>
+        <div class="fix"></div>
+        <button class="tickets" (click)="toggleDetails(ticket)">
+          More Details
+        </button>
+
+        <div class="ticket-details" *ngIf="ticket.showDetails">
+          <p
+            *ngIf="
+              ticket.event.ageLimitLower == 0 && ticket.event.ageLimitUpper == 0
+            "
+          >
+            No age Restrictions
+          </p>
+          <p
+            *ngIf="
+              ticket.event.ageLimitLower != 0 || ticket.event.ageLimitUpper != 0
+            "
+          >
+            Age Limit: {{ ticket.event.ageLimitLower }} -
+            {{ ticket.event.ageLimitUpper }}
+          </p>
+          <p>
+            Address: {{ ticket.event.address.city }},
+            {{ ticket.event.address.state }},
+            {{ ticket.event.address.country }}
+          </p>
+          <p>Registered Details:</p>
+          <ul>
+            <li *ngFor="let questionAnswer of ticket.questionAnswers">
+              {{ questionAnswer.questionName }}: {{ questionAnswer.answer }}
+            </li>
+          </ul>
+          <button
+            class="tickets"
+            (click)="deleteTicket(ticket.ticketDetails.transactionId)"
+            style="background-color: red"
+          >
+            Cancel Ticket
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <ng-container *ngIf="(ticketsData && ticketsData.length) > 0; else noTicketsTemplate">
+  <h2 class="upcomming">Your Tickets</h2>
+    <div *ngFor="let ticket of ticketsData">
+      <div class="item">
+        <div class="item-right">
+          <div class="qr-code">
+            <qrcode
+              [qrdata]="generateQRCodeValue(ticket.questionAnswers)"
+              [width]="128"
+              [errorCorrectionLevel]="'M'"
+            ></qrcode>
+          </div>
+          <span class="up-border"></span>
+          <span class="down-border"></span>
+        </div>
+        <div class="item-left">
+          <p class="event">Ticket for Event:</p>
+          <h2 class="title">{{ ticket.event.name }}</h2>
+
+          <div class="sce">
+            <div class="icon">
+              <i class="fa fa-table"></i>
+            </div>
+            <p>
+              {{ ticket.event.startDate | date : "EEEE" }}
+              {{ ticket.event.startDate | date }} <br />
+              {{ ticket.event.startDate | date : "h:mm a" }}
+            </p>
+          </div>
+          <div class="fix"></div>
+          <div class="loc">
+            <div class="icon">
+              <i class="fa fa-map-marker"></i>
+            </div>
+            <p>
+              {{ ticket.event.address.city }}, {{ ticket.event.address.state }}
+              <br />
+              {{ ticket.event.address.country }}
+            </p>
+          </div>
+          <div class="fix"></div>
+          <button class="tickets" (click)="toggleDetails(ticket)">
+            More Details
+          </button>
+
+          <div class="ticket-details" *ngIf="ticket.showDetails">
+            <p
+              *ngIf="
+                ticket.event.ageLimitLower == 0 && ticket.event.ageLimitUpper == 0
+              "
+            >
+              No age Restrictions
+            </p>
+            <p
+              *ngIf="
+                ticket.event.ageLimitLower != 0 || ticket.event.ageLimitUpper != 0
+              "
+            >
+              Age Limit: {{ ticket.event.ageLimitLower }} -
+              {{ ticket.event.ageLimitUpper }}
+            </p>
+            <p>
+              Address: {{ ticket.event.address.city }},
+              {{ ticket.event.address.state }},
+              {{ ticket.event.address.country }}
+            </p>
+            <p>Registered Details:</p>
+            <ul>
+              <li *ngFor="let questionAnswer of ticket.questionAnswers">
+                {{ questionAnswer.questionName }}: {{ questionAnswer.answer }}
+              </li>
+            </ul>
+            <button
+              class="tickets"
+              (click)="deleteTicket(ticket.ticketDetails.transactionId)"
+              style="background-color: red"
+            >
+              Cancel Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <!-- Message when there are no tickets available -->
+  <ng-template #noTicketsTemplate>
+    <mat-card class="notickets">
+      <mat-card-content>
+        <p class="no-tickets-message">NO TICKETS AVAILABLE</p>
+        <p class="no-tickets-message">Register for an event</p>
+      </mat-card-content>
+    </mat-card>
+  </ng-template>
+  
+</div>
+

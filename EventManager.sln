@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33502.453
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "angularapp", "angularapp\angularapp.esproj", "{102DFCEA-FF06-49E2-9362-20123A0B36D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventManager.API", "webapi\EventManager.API.csproj", "{C226C09A-1E58-4435-8974-7EB69D282EF8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventManager.BLL", "EventManager.BLL\EventManager.BLL.csproj", "{FE6D6A55-F973-4A01-B567-6992A9D17BBE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventManager.DAL", "EventManager.DAL\EventManager.DAL.csproj", "{ADDA01B2-0841-4EE7-B622-B57E96A6F07C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventManager.Models", "EventManager.Models\EventManager.Models.csproj", "{D364CD6C-C2C2-4AAF-AA6D-E74E653C0C00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventManager.Util", "EventManager.Util\EventManager.Util.csproj", "{D7749644-08E7-4FF6-AB45-B6442C01DA2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{102DFCEA-FF06-49E2-9362-20123A0B36D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{102DFCEA-FF06-49E2-9362-20123A0B36D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{102DFCEA-FF06-49E2-9362-20123A0B36D4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{102DFCEA-FF06-49E2-9362-20123A0B36D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{102DFCEA-FF06-49E2-9362-20123A0B36D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{102DFCEA-FF06-49E2-9362-20123A0B36D4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C226C09A-1E58-4435-8974-7EB69D282EF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C226C09A-1E58-4435-8974-7EB69D282EF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C226C09A-1E58-4435-8974-7EB69D282EF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C226C09A-1E58-4435-8974-7EB69D282EF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE6D6A55-F973-4A01-B567-6992A9D17BBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE6D6A55-F973-4A01-B567-6992A9D17BBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE6D6A55-F973-4A01-B567-6992A9D17BBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE6D6A55-F973-4A01-B567-6992A9D17BBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADDA01B2-0841-4EE7-B622-B57E96A6F07C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADDA01B2-0841-4EE7-B622-B57E96A6F07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADDA01B2-0841-4EE7-B622-B57E96A6F07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADDA01B2-0841-4EE7-B622-B57E96A6F07C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D364CD6C-C2C2-4AAF-AA6D-E74E653C0C00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D364CD6C-C2C2-4AAF-AA6D-E74E653C0C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D364CD6C-C2C2-4AAF-AA6D-E74E653C0C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D364CD6C-C2C2-4AAF-AA6D-E74E653C0C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7749644-08E7-4FF6-AB45-B6442C01DA2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7749644-08E7-4FF6-AB45-B6442C01DA2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7749644-08E7-4FF6-AB45-B6442C01DA2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7749644-08E7-4FF6-AB45-B6442C01DA2A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {708E6F90-2F1C-4D18-856A-B64E4CA55B96}
+	EndGlobalSection
+EndGlobal

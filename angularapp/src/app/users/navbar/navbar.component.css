@@ -1,0 +1,26 @@
+.outer {
+  justify-content: space-between;
+}
+
+.title {
+    font-size: 25px;
+    /* font-family: "Arial", sans-serif; */
+    color: snow;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    font-family: "Bruno Ace SC", cursive;
+  }
+  
+  .title:hover {
+    color: lightgray;
+    cursor: pointer;
+  }
+  
+  .navbar{
+    top:0px;
+    position: fixed;
+    z-index: 1;
+    padding:0 0;
+    background-color: #2f394c;
+    color:snow;
+  }

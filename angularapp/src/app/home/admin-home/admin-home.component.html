@@ -1,0 +1,29 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} {{element.lastName}} </td>
+    </ng-container>
+    <ng-container matColumnDef="age">
+      <th mat-header-cell *matHeaderCellDef> Age </th>
+      <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Approval Status</th>
+      <td mat-cell *matCellDef="let element"> {{getEnumValue(element.approvalStatus)}} </td>
+    </ng-container>
+    <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element"><button style="z-index: 0;" (click)="Edit(element.id)" mat-stroked-button color="warn">Edit</button></td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <nav aria-label="Page navigation example d-flex" *ngIf="ShowPaginator">
+    <ul class="pagination justify-content-center p-2">
+      <li *ngIf="this.paginationData.previousPage>=1" class="page-item"><a class="page-link" (click)="Previous()">{{this.paginationData.previousPage}}</a></li>
+      <li class="page-item page-item active" style="width: 3.1rem;"><a class="page-link d-flex justify-content-center">{{this.paginationData.currentPage}}</a></li>
+      <li *ngIf="paginationData.nextPage<=paginationData.pageLimit" class="page-item"><a class="page-link" (click)="Next()">{{paginationData.nextPage}}</a></li>
+    </ul>
+  </nav>
+</div>

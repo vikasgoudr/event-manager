@@ -1,0 +1,45 @@
+<div class="card">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="question.name" name="name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Type</mat-label>
+    <mat-select [(ngModel)]="question.type" name="type">
+      <mat-option value="textarea">Text</mat-option>
+      <mat-option value="number">Number</mat-option>
+      <mat-option value="date">Date</mat-option>
+      <mat-option value="time">Time</mat-option>
+      <mat-option value="select">Dropdown</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="this.question.type=='select'">
+    <mat-label>Number of Options</mat-label>
+    <input
+      matInput
+      type="number"
+      [(ngModel)]="numberOfOptions"
+      name="numberOfOptions"
+      (input)="generateOptions()"
+    />
+  </mat-form-field>
+
+  <div *ngFor="let option of options; let i = index">
+    <mat-form-field>
+      <mat-label>Option</mat-label>
+      <input matInput [(ngModel)]="options[i].value" name="option" />
+    </mat-form-field>
+  </div>
+
+  <mat-form-field>
+    <mat-label>Required Field?</mat-label>
+    <mat-select [(ngModel)]="question.isRequired" name="required">
+      <mat-option [value]="true">Yes</mat-option>
+      <mat-option [value]="false">No</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button cdkFocusInitial (click)="add()">Add</button>
+  </div>
+</div>

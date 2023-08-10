@@ -1,0 +1,55 @@
+<div class="addEvent">
+    <button style="z-index:0" mat-raised-button color="primary" (click)="addEvent()">
+        Add Event
+    </button>
+  </div>
+  <mat-grid-list cols="3" rowHeight="460px" class="d-flex">
+    
+    <div *ngIf="events.length == 0">
+      <mat-grid-tile class="my-2 event-tile">
+        <mat-card class="">
+          <mat-card-header>
+            <mat-card-title class="tile-name">No events found.</mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <span>Try adding a event using </span><button style="z-index:0" mat-raised-button color="primary" (click)="addEvent()">
+              Add Event
+          </button><span> button</span>
+          </mat-card-content>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+  
+    <div *ngFor="let event of events">
+      <mat-grid-tile class="my-2 event-tile">
+        <mat-card class="">
+          <mat-card-header>
+            <mat-card-title class="tile-name">{{ event.name }}</mat-card-title>
+           
+          </mat-card-header>
+          <mat-card-content>
+            <img class="tile-image" mat-card-image [src]="'data:image/png;base64,' + event.posterImage"
+              alt="Poster Image">
+            <p class="tile-dates">Start Date: {{ event.startDate | date }}</p>
+            <p class="tile-dates">End Date: {{ event.endDate | date }}</p>
+            <p class="tile-ages" *ngIf="!event.hasAgeLimit"><b>No age Limit</b></p>
+            <p class="tile-ages" *ngIf="event.hasAgeLimit">Ages: {{ event.ageLimitLower }}-{{event.ageLimitUpper}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button class="btn btn-info" (click)="registeredUsers(event.id)">
+              Registered Users
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+  <div class="mat-elevation-z8" *ngIf="events.length > 0">
+    <nav aria-label="Page navigation example d-flex" *ngIf="showPaginator">
+      <ul class="pagination justify-content-center p-2">
+        <li *ngIf="this.paginationData.previousPage>=1" class="page-item"><a class="page-link" (click)="Previous()">{{this.paginationData.previousPage}}</a></li>
+        <li class="page-item page-item active" style="width: 3.1rem;"><a class="page-link d-flex justify-content-center">{{this.paginationData.currentPage}}</a></li>
+        <li *ngIf="paginationData.nextPage<=paginationData.pageLimit" class="page-item"><a class="page-link" (click)="Next()">{{paginationData.nextPage}}</a></li>
+      </ul>
+    </nav>
+  </div>

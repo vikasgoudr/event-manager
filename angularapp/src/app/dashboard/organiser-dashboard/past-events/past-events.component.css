@@ -1,0 +1,41 @@
+.d-flex {
+    display: flex;
+    justify-content: center;
+    /* left:-9px; */
+  }
+  
+  .event-tile {
+    margin: 10px;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .tile-image {
+    width: 350px;
+    height: 250px;
+  }
+  
+  .tile-dates,
+  .tile-organizer {
+    margin-top: 10px;
+  }
+  
+  .tile-organizer {
+    font-weight: bold;
+  }
+  .addEvent{
+    display: flex;
+    justify-content: end;
+    z-index: 0;
+  }
+  .mat-card-header
+  {
+    justify-content: flex-end;
+  }
+  
+  
+  .tile-name{
+    font-family: 'Bruno Ace SC', cursive;
+  }
+  
+  

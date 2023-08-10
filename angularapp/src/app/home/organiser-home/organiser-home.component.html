@@ -1,0 +1,45 @@
+<!-- <div class="centered-container">
+  <ng-container *ngIf="tokenData">
+    <mat-card class="centered-card mat-elevation-z4">
+      <mat-card-content>
+        <ng-container *ngIf="tokenData.approvalStatus == 3">
+          <h1 class="centered-text">Hold on tight ...!!</h1>
+          <p class="centered-text">Admin is still reviewing your application!</p>
+        </ng-container>
+        <ng-container *ngIf="tokenData.approvalStatus == 2">
+          <h1 class="centered-text">Sorry!</h1>
+          <p class="centered-text">Your Application has been declined by the admin.</p>
+        </ng-container>
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
+  <ng-container *ngIf="tokenData && tokenData.approvalStatus == 1">
+    <app-dashboard-layout></app-dashboard-layout>
+  </ng-container>
+</div> -->
+
+
+
+<ng-container *ngIf="!tokenData || tokenData.approvalStatus != 1">
+  <div class="centered-container">
+    <ng-container *ngIf="tokenData">
+      <mat-card class="centered-card mat-elevation-z4">
+        <mat-card-content>
+          <ng-container *ngIf="tokenData.approvalStatus == 3">
+            <h1 class="centered-text">Hold on tight ...!!</h1>
+            <p class="centered-text">Admin is still reviewing your application!</p>
+          </ng-container>
+          <ng-container *ngIf="tokenData.approvalStatus == 2">
+            <h1 class="centered-text">Sorry!</h1>
+            <p class="centered-text">Your Application has been declined by the admin.</p>
+          </ng-container>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+</ng-container>
+
+<ng-container *ngIf="tokenData && tokenData.approvalStatus == 1">
+  <app-dashboard-layout></app-dashboard-layout>
+</ng-container>

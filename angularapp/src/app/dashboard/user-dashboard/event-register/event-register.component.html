@@ -1,0 +1,94 @@
+<div class="card container">
+  <div class="event-section">
+    <mat-card>
+      <mat-card-header style="color: black">
+        <img
+          class="cover-image"
+          [src]="'data:image/png;base64,' + data.posterImage"
+          alt="Poster Image"
+        />
+      </mat-card-header>
+      <br />
+      <mat-card-content>
+        <div class="d-flex justify-content-between">
+          <div>
+            <div id="field">Event : {{ data.name }}</div>
+            <div id="field2">
+              {{ data.startDate | date }} - {{ data.endDate | date }}
+            </div>
+          </div>
+          <button class="btn btn-danger btn-sm" (click)="registrationform()">
+            Register
+          </button>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <hr />
+        <div id="field3" *ngIf="data.eventCapacity - data.currentOccupancy > 0">
+          Remaining Slots : {{ data.eventCapacity - data.currentOccupancy }}
+        </div>
+        <div
+          class="alreadyFull"
+          *ngIf="data.eventCapacity - data.currentOccupancy == 0"
+        >
+          Already Full
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <br />
+    <div *ngIf="isreadyToRegister">
+      <mat-card>
+        <mat-card-content>
+          <form [formGroup]="dynamicForm">
+            <h2 style="color: black">Register for {{ data.name }} :</h2>
+            <hr />
+            <div *ngFor="let field of formData" class="m-2">
+              <div *ngIf="field.type == 'select'">
+                <select formControlName="{{ field.id }}" class="form-control">
+                  <option value="">{{ field.name }}</option>
+                  <option
+                    *ngFor="let option of field.options"
+                    [value]="option.value"
+                  >
+                    {{ option.value }}
+                  </option>
+                </select>
+              </div>
+              <input
+                *ngIf="field.type != 'select'"
+                formControlName="{{ field.id }}"
+                class="form-control"
+                [type]="field.type"
+                placeholder="{{ field.name }}"
+              />
+            </div>
+
+            <div *ngIf="!data.isFreeToAttend" class="m-2">
+              <select class="form-control" (change)="onPaymentTierChange($event.target)">
+                <option value="0" selected>Select Payment tier</option>
+                <option *ngFor="let tier of paymentTierData" value="{{tier.id}}">
+                  {{ tier.name }} - {{ tier.amount }}
+                </option>
+              </select>
+              
+            </div>
+            
+            
+            
+
+            <div class="d-flex justify-content-around">
+              <button class="btn btn-primary btn-sm" (click)="payment()">
+                Continue Booking
+              </button>
+              <button class="btn btn-danger btn-sm" (click)="CloseModel()">
+                Close
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+  <br />
+
+</div>

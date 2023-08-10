@@ -1,0 +1,119 @@
+<div class="body">
+  <div class="container">
+    <mat-card class="register-card">
+      <mat-card-header>
+        <mat-card-title class="title">REGISTER</mat-card-title>
+      </mat-card-header>
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+          <div class="form-row">
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>First Name</mat-label>
+                <input matInput formControlName="firstName" placeholder="First Name">
+                <mat-error *ngIf="registerForm.controls['firstName'].invalid && (registerForm.controls['firstName'].dirty || registerForm.controls['firstName'].touched)">
+                  First Name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Last Name</mat-label>
+                <input matInput formControlName="lastName" placeholder="Last Name">
+                <mat-error *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)">
+                  Last Name is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Username</mat-label>
+                <input matInput formControlName="userName" placeholder="Username">
+                <mat-error *ngIf="registerForm.controls['userName'].invalid && (registerForm.controls['userName'].dirty || registerForm.controls['userName'].touched)">
+                  Username is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Email</mat-label>
+                <input matInput formControlName="email" placeholder="Email">
+                <mat-error *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)">
+                  Email is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Password</mat-label>
+                <input matInput formControlName="password" type="password" placeholder="Password">
+                <mat-error *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)">
+                  Password is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Age</mat-label>
+                <input matInput formControlName="age" type="number" placeholder="Age">
+                <mat-error *ngIf="registerForm.controls['age'].invalid && (registerForm.controls['age'].dirty || registerForm.controls['age'].touched)">
+                  Age is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Phone Number</mat-label>
+                <input matInput formControlName="phoneNumber" type="tel" placeholder="Phone Number">
+                <mat-error *ngIf="registerForm.controls['phoneNumber'].invalid && (registerForm.controls['phoneNumber'].dirty || registerForm.controls['phoneNumber'].touched)">
+                  Phone Number is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender" placeholder="Gender">
+                  <mat-option *ngFor="let option of genderValues" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registerForm.controls['gender'].invalid && (registerForm.controls['gender'].dirty || registerForm.controls['gender'].touched)">
+                  Gender is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-6">
+              <mat-form-field appearance="fill" class="input-field">
+                <mat-label>Role</mat-label>
+                <mat-select formControlName="role" placeholder="Role">
+                  <mat-option *ngFor="let option of roleValues" [value]="option">{{ option }}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="registerForm.controls['role'].invalid && (registerForm.controls['role'].dirty || registerForm.controls['role'].touched)">
+                  Role is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-md-9">
+              <button mat-raised-button color="primary" type="submit" class="register-button" [disabled]="!registerForm.valid">Register</button>
+            </div>
+            <div class="col-md-3">
+              <button mat-raised-button routerLink="">
+                Back
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>
+

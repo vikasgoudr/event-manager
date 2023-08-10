@@ -1,0 +1,44 @@
+﻿<mat-toolbar color="#ff0000" class="navbar">
+  <div class="mat-toolbar-row d-flex outer">
+    <div>
+      <span *ngIf="role=='1'" class="title" routerLink="user-home">B<i class="fa fa-eye"></i><i class="fa fa-eye"></i>K
+        UR Event</span>
+      <span *ngIf="role=='2'" class="title" routerLink="organiser-home">B<i class="fa fa-eye"></i><i
+          class="fa fa-eye"></i>K UR Event</span>
+      <span *ngIf="role=='3'" class="title" routerLink="admin-home">B<i class="fa fa-eye"></i><i class="fa fa-eye"></i>K
+        UR Event</span>
+      <span *ngIf="role==''" class="title" routerLink="">B<i class="fa fa-eye"></i><i class="fa fa-eye"></i>K UR
+        Event</span>
+    </div>
+
+    <div>
+      <ng-container *ngIf="!isLoggedIn">
+        <button mat-button routerLink="login-comp">Login</button>
+        <button mat-button routerLink="register-comp">Register</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn && role === '3'">
+        <button mat-button (click)="adminHome()">Dashboard</button>
+        <button mat-button (click)="userProfile()">Profile</button>
+        <button mat-button (click)="logout()">Logout</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn && role === '2' && validOrganiser==1">
+        <button mat-button (click)="organiserHome()">Dashboard</button>
+        <button mat-button (click)="userHome()">Events</button>
+        <button mat-button (click)="pastEvents()">Past Events</button>
+        <button mat-button (click)="tickets()">Tickets</button>
+        <button mat-button (click)="userProfile()">Profile</button>
+        <button mat-button (click)="logout()">Logout</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn && role === '2' && validOrganiser!=1">
+        <button mat-button (click)="logout()">Logout</button>
+      </ng-container>
+      <ng-container *ngIf="isLoggedIn && role === '1'">
+        <button mat-button (click)="userHome()">Dashboard</button>
+        <button mat-button (click)="tickets()">Tickets</button>
+        <button mat-button (click)="userProfile()">Profile</button>
+        <button mat-button (click)="logout()">Logout</button>
+      </ng-container>
+      <!-- <span class="spacer"></span> -->
+    </div>
+  </div>
+</mat-toolbar>

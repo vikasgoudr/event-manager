@@ -1,0 +1,26 @@
+.snackbar-green {
+    background-color: green !important;
+    color: white !important
+  }
+
+  .form-fields-container {
+    display: flex;
+    
+  }
+  
+  .form-fields-container .mat-form-field {
+    flex-basis: 45%;
+    margin-bottom: 1rem;
+    justify-content: space-between;
+  }
+  .form-container {
+    max-height: 500px; /* Adjust the height as needed */
+    overflow-y: auto;
+  }
+.title{
+  font-family: "Bruno Ace SC", cursive;
+}  
+.my-form{
+  background-color: black;
+  color: white;
+}

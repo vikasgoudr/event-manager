@@ -1,0 +1,206 @@
+<div class="container">
+  <div class="my-form left">
+    <h1 class="title">AddEvent</h1>
+    <div class="form-container">
+      <form [formGroup]="eventForm">
+        <div>
+          <label>Event Name</label>
+          <input
+            type="text"
+            formControlName="name"
+            placeholder="Event Name"
+            required
+          />
+        </div>
+        <div>
+          <label>Start Date</label>
+          <input
+            type="datetime-local"
+            formControlName="startDate"
+            placeholder="Start Date"
+            required
+          />
+        </div>
+        <div>
+          <label>End Date</label>
+          <input
+            type="datetime-local"
+            formControlName="endDate"
+            placeholder="End Date"
+            required
+          />
+        </div>
+
+        <div>
+          <label>Has age Limit?</label>
+          <input
+            type="radio"
+            name="test"
+            value="true"
+            (change)="onAgeLimitChange($event)"
+          />
+          Yes
+          <input
+            type="radio"
+            name="test"
+            value="false"
+            (change)="onAgeLimitChange($event)"
+          />
+          No
+        </div>
+
+        <div *ngIf="showAgeLimitColumns > 0">
+          <div>
+            <label>Age Limit Lower</label>
+            <input
+              matInput
+              formControlName="ageLimitLower"
+              placeholder="Age Limit Lower"
+              required
+            />
+          </div>
+          <div>
+            <label>Age Limit Upper</label>
+            <input
+              matInput
+              formControlName="ageLimitUpper"
+              placeholder="Age Limit Upper"
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <label>Is Free?</label>
+          <input
+            type="radio"
+            name="free"
+            value="true"
+            (change)="onEventTypeChange($event)"
+          />
+          Yes
+          <input
+            type="radio"
+            name="free"
+            value="false"
+            (change)="onEventTypeChange($event)"
+          />
+          No
+        </div>
+        <div>
+          <label>Event Capacity</label>
+          <input
+            matInput
+            formControlName="eventCapacity"
+            placeholder="Event Capacity"
+            required
+          />
+        </div>
+        <div>
+          <label>Poster Image :</label>
+          <input
+            type="file"
+            (change)="onImageSelect($event)"
+            accept="image/*"
+          />
+        </div>
+        <div formGroupName="address">
+          <div>
+            <label>Address Line 1</label>
+            <input
+              matInput
+              formControlName="line1"
+              placeholder="Address Line 1"
+              required
+            />
+          </div>
+          <div>
+            <label>Address Line 2</label>
+            <input
+              matInput
+              formControlName="line2"
+              placeholder="Address Line 2"
+              required
+            />
+          </div>
+          <div>
+            <label>City</label>
+            <input
+              matInput
+              formControlName="city"
+              placeholder="City"
+              required
+            />
+          </div>
+          <div>
+            <label>State</label>
+            <input
+              matInput
+              formControlName="state"
+              placeholder="State"
+              required
+            />
+          </div>
+          <div>
+            <label>Country</label>
+            <input
+              matInput
+              formControlName="country"
+              placeholder="Country"
+              required
+            />
+          </div>
+        </div>
+        <button
+          [disabled]="!eventForm.valid"
+          class="btn btn-primary"
+          (click)="submitForm()"
+        >
+          Submit
+        </button>
+        <button class="btn btn-danger" (click)="Back()">Close</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ... (existing template code) -->
+
+  <div *ngIf="showTierInputColumns > 0" class="my-form right">
+    <div *ngIf="showTierInputColumns > 0">
+      <label>Number of Tiers</label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="numberOfOptions"
+        name="numberOfOptions"
+        (input)="generateOptions()"
+      />
+    </div>
+
+    <div *ngFor="let tier of paymentTiers; let i = index">
+      <mat-card class="cardmat">
+        <mat-card-header>
+          <h3>Payment Tier {{i+1}}</h3>
+        </mat-card-header>
+        <mat-card-content>
+        <div>
+          <label>Tier Name</label>
+          <input matInput [(ngModel)]="paymentTiers[i].name" name="tierName" />
+        </div>
+
+        <div>
+          <label>Amount</label>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="paymentTiers[i].amount"
+            name="amount"
+          />
+        </div>
+      </mat-card-content>
+      </mat-card>
+    </div>
+    <!-- <button (click)="paymentTiersSave()">Show Tiers</button> -->
+  </div>
+
+  <!-- ... (existing template code) -->
+</div>

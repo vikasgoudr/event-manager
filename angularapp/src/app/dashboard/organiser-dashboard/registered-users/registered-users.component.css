@@ -1,0 +1,15 @@
+.title{
+    color:white;
+    font-size: 20px;
+    margin-left: 5px;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.noData{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}

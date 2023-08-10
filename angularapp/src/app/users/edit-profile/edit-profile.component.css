@@ -1,0 +1,47 @@
+body{margin-top:20px;}
+.avatar{
+width:200px;
+height:200px;
+}
+.wholeForm{
+    background-color:rgb(255, 253, 253);
+    border-radius: 10px;
+}
+h1{
+    
+  font-size: 30px;
+
+  font-family: "Bruno Ace SC", cursive;
+}
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .image {
+    position: relative;
+    text-align: center;
+  }
+  
+  .image img:hover {
+      filter: blur(4px);
+      cursor: pointer;
+  }
+  
+  .image-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    color: white;
+    padding: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .image:hover .image-overlay {
+    opacity: 1;
+  }
+  

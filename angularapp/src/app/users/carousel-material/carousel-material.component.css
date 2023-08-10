@@ -1,0 +1,71 @@
+.scrollable-container {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: transparent transparent; /* For Chrome, Edge, and Safari */
+}
+
+.scrollable-container::-webkit-scrollbar {
+  width: 6px; /* Adjust the width as needed */
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Hide the thumb */
+}
+
+.card {
+  background-color: black;
+  flex: 0 0 auto;
+  margin-right: 10px;
+  width: 250px; /* Adjust the width as needed */
+  border: 0 black;
+  transition: transform 0.13s ease; /* Adjust the transition duration for a faster effect */
+}
+
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.07); /* Apply enlargement on hover */
+}
+
+.tile-image {
+  top: 10px;
+  width: 100%;
+  height: 200px;
+  border-top-right-radius: 5%;
+  border-top-left-radius: 5%;
+  border-radius: 5%;
+}
+
+.tile-dates,
+.ages {
+  color: white;
+  margin-top: 10px;
+}
+
+.login-button {
+  background-color: white;
+  color: black;
+}
+
+.matcard {
+  background-color: black;
+}
+
+.tile-title {
+  color: white;
+  font-family: "Bruno Ace SC", cursive;
+}
+
+.alreadyFull {
+  color: red;
+}
+.custom-dialog-panel {
+  position: fixed !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow-y: auto;
+  overflow: hidden;
+}

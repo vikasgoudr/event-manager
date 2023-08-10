@@ -1,0 +1,45 @@
+.external {
+  width: 600px;
+  margin: auto;
+}
+
+.example-card {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.title {
+  font-size: 30px;
+}
+
+.example-header-image {
+  width: 64px;
+  height: 64px;
+  background-color: #ccc;
+  border-radius: 50%;
+  position: relative;
+}
+
+.example-header-image::before,
+.example-header-image::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+
+.example-header-image::before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+*:not(mat-icon) {
+  font-family: 'Bruno Ace SC', cursive;
+}
+
+/* button:not(.mat-icon-button) {
+  font-family: 'Bruno Ace SC', cursive;
+} */

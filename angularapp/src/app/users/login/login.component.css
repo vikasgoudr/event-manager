@@ -1,0 +1,31 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 400px;
+  padding: 20px;
+  background: black;
+  color: white;
+}
+.title {
+  font-size: 30px;
+
+  font-family: "Bruno Ace SC", cursive;
+}
+.input-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-button {
+  float: right;
+}
+.g-button{
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}

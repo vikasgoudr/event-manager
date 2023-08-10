@@ -1,0 +1,71 @@
+<div *ngIf="carousel.length == 0">
+  <div class="
+  -item active d-flex justify-content-around">
+    <div id="mainCard">
+      <div id="field">No events found.</div>
+    </div>
+  </div>
+</div>
+
+<div
+  id="main-carousel"
+  class="carousel slide my-2"
+  style="background-color: black"
+>
+  <div class="carousel-inner" *ngFor="let data of carousel">
+    <div
+      *ngIf="data.id == currentSlide"
+      class="carousel-item active d-flex justify-content-around"
+    >
+      <div id="mainCard">
+        <div id="field">
+          {{ data.name }}
+        </div>
+        <div id="field2">
+          {{ data.startDate | date }} - {{ data.endDate | date }}
+        </div>
+        <div id="field3" *ngIf="data.eventCapacity - data.currentOccupancy > 0">
+          Remaining Slots : {{ data.eventCapacity - data.currentOccupancy }}
+        </div>
+        <div
+          class="alreadyFull"
+          *ngIf="data.eventCapacity - data.currentOccupancy == 0"
+        >
+          Already Full
+        </div>
+        <div class="text-white mt-2">
+          <div *ngIf="!isLoggedIn">
+            <p>Haven't logged in ?</p>
+            <button class="btn" (click)="Login()">Login</button>
+          </div>
+          <div *ngIf="isLoggedIn">
+            <button
+              class="btn"
+              (click)="Register(data)"
+              *ngIf="data.eventCapacity - data.currentOccupancy > 0"
+            >
+              Register
+            </button>
+          </div>
+        </div>
+      </div>
+      <img
+        [src]="'data:image/png;base64,' + data.posterImage"
+        alt="Poster Image"
+        style="width: 60%; height: 85vh; object-fit: cover; opacity: 70%"
+      />
+    </div>
+  </div>
+  <a *ngIf="carousel.length != 0" class="carousel-control-prev ml-2" role="button" id="arrow-button">
+    <span class="carousel-control-prev-icon" (click)="PreviousSlide()"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a *ngIf="carousel.length != 0" class="carousel-control-next mr-2" role="button" id="arrow-button">
+    <span class="carousel-control-next-icon" (click)="NextSlide()"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- <div class="scroll-down-button text-white fa fa-arrow-down d-flex justify-content-center" (click)="ScrollDown()">
+   Scroll Down
+</div> -->
+<app-carousel-material></app-carousel-material>

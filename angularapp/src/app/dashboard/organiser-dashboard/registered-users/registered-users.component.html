@@ -1,0 +1,82 @@
+ 
+<div *ngIf="showTable === 0" class="title">
+  <div class="noData">
+    No Users Registered<a class="btn btn-info mx-2" (click)="back()">Back</a>
+  </div>
+</div>
+<div *ngIf="showTable !== 0">
+  <div class="d-flex justify-content-between">
+    <div class="title">Users Registered</div>
+    <div>
+      <a class="btn btn-info mx-2" (click)="back()">Back</a>
+    </div>
+  </div>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let element">{{ element.userName }}</td>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+      </ng-container>
+      <ng-container matColumnDef="gender">
+        <th mat-header-cell *matHeaderCellDef>Gender</th>
+        <td mat-cell *matCellDef="let element">{{ getEnumValue(element.gender) }}</td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef>Age</th>
+        <td mat-cell *matCellDef="let element">{{ element.age }}</td>
+      </ng-container>
+      <ng-container matColumnDef="phonenumber">
+        <th mat-header-cell *matHeaderCellDef>PhoneNumber</th>
+        <td mat-cell *matCellDef="let element">{{ element.phoneNumber }}</td>
+      </ng-container>
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef>Details</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon (click)="toggleDetails(element)">{{ element.expanded ? 'expand_less' : 'info' }}</mat-icon>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <br />
+    <div *ngFor="let user of dataSource.data" class="ticket-container" [hidden]="!user.expanded">
+      <mat-card>
+        <mat-card-header>Tickets for {{ user.userName }}</mat-card-header>
+        <mat-card-content>
+          <div *ngIf="!user.ticketsData" class="no-tickets">
+            No tickets to display
+          </div>
+          <div *ngIf="user.ticketsData" class="ticket-list">
+            <div *ngFor="let ticket of user.ticketsData">
+              <p>Transaction ID: {{ ticket.ticketDetails.transactionId }}</p>
+              <p>Registered Details:</p>
+              <ul>
+                <li *ngFor="let questionAnswer of ticket.questionAnswers">
+                  {{ questionAnswer.questionName }}: {{ questionAnswer.answer }}
+                </li>
+              </ul>
+              <hr />
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <nav aria-label="Page navigation example d-flex" *ngIf="showPaginator">
+      <ul class="pagination justify-content-center p-2">
+        <li *ngIf="paginationData.previousPage >= 1" class="page-item">
+          <a class="page-link" (click)="Previous()">{{ paginationData.previousPage }}</a>
+        </li>
+        <li class="page-item page-item active" style="width: 3.1rem">
+          <a class="page-link d-flex justify-content-center">{{ paginationData.currentPage }}</a>
+        </li>
+        <li *ngIf="paginationData.nextPage <= paginationData.pageLimit" class="page-item">
+          <a class="page-link" (click)="Next()">{{ paginationData.nextPage }}</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
